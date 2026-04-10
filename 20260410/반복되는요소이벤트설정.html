@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* li:hover{
+            background-color: aqua;
+            font-size: 50px;
+        } */
+        /* css 자동으로 마우스를 올리는 객체 인식
+        해당 마우스 아웃 시 자동으로 원상복구 */
+    </style>
+</head>
+<body>
+    <ul class="list">
+        <li>목록1</li>
+        <li>목록2</li>
+        <li>목록3</li>
+        <li>목록4</li>
+        <li>목록5</li>
+    </ul>
+    <script>
+        const list=document.querySelectorAll('li');
+        // => li는 배열 처리 순서값으로 선택
+        // list[0].addEventListener('mouseenter',()=>{
+        //     list[0].style.backgroundColor='red'
+        // })
+        // list[0].addEventListener('mouseleave',()=>{
+        //     list[0].style.backgroundColor='white'
+        // })
+        // list[1].addEventListener('mouseenter',()=>{
+        //     list[1].style.backgroundColor='red'
+        // })
+        // list[1].addEventListener('mouseleave',()=>{
+        //     list[1].style.backgroundColor='white'
+        // })
+
+        list.forEach((i) => {
+            i.addEventListener('mouseenter',(event)=>{
+                // i.style.backgroundColor='red'
+                // => i : 각각의 순서에 맞는 li값
+                // => 이벤트 발생 객체(event.currentTarget)
+                // => 현재 이벤트 대상으로 표기
+                event.currentTarget.style.backgroundColor='red'
+                // => i로 표기하는 거랑 기능은 똑같음
+            })
+            i.addEventListener('mouseleave',(event)=>{
+                event.currentTarget.style.backgroundColor='white'
+            })
+        });
+
+        
+    </script>
+</body>
+</html>

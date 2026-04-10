@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .mask_box{
+            width: 500px;
+            height: 500px;
+            border: 10px solid black;
+            position: relative;
+            /* overflow: hidden; */
+        }
+        .move_box{
+            width: calc(100% * 5);
+            height: 500px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 0.5s;
+            display: flex;
+        }
+        .but{
+            width: 100px;
+            height: 100px;
+            font-size: 100px;
+            position: absolute;
+            top: calc(50% - 50px);
+        }
+        .left_but{
+            left: 0;
+        }
+        .right_but{
+            right: 0;
+        }
+        .img_box{
+            width: 500px;
+            height: 500px;
+            background-color: blueviolet;
+            text-align: center;
+            border: 5px solid red;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="mask_box">
+        <div class="move_box">
+            <div class="img_box">1</div>
+            <div class="img_box">2</div>
+            <div class="img_box">3</div>
+            <div class="img_box">4</div>
+            <div class="img_box">5</div>
+        </div> <!-- move_box -->
+        <div class="but left_but">%lt;</div>
+        <div class="but right_but">%gt;</div>
+    </div> <!-- mask_box -->
+    <script>
+        // 문제
+        // 오른쪽 버튼을 클릭할 때 마다 move_box가 -500, -1000, -1500~ 움직이게 마지막 영역에서는 움직이지 않게
+        // 왼쪽 버튼을 클릭하면 다시 오른쪽으로 가게 만들기
+    </script>
+</body>
+</html>

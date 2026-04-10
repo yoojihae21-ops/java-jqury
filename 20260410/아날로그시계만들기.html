@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .clock{
+            width: 400px;
+            height: 400px;
+            background-color: rgb(0, 41, 129);
+            border-radius: 50%;
+            position: relative;
+            border:20px solid #d4dde9;
+        }
+        .clock>div{
+            position: absolute;
+            transform-origin: bottom;
+        }
+        .lineHour{
+            width: 10px;
+            height: 100px;
+            background-color: white;
+            top: calc(50% - 100px);
+            left: calc(50% - 5px);
+        }
+        .lineMin{
+            width: 4px;
+            height: 180px;
+            background-color: aqua;
+            top: calc(50% - 180px);
+            left: calc(50% - 2px);
+        }
+        .lineSec{
+            width: 2px;
+            height: 180px;
+            background-color: rgb(186, 112, 255);
+            top: calc(50% - 180px);
+            left: calc(50% - 1px);
+        }
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div class="lineHour"></div>
+        <div class="lineMin"></div>
+        <div class="lineSec"></div>
+    </div>
+    <script>
+        function clock_f(){
+            // 1. 객체 선택하기
+            const lineHour=document.querySelector('.lineHour');
+            const lineMin=document.querySelector('.lineMin');
+            const lineSec=document.querySelector('.lineSec');
+            // 2. 시간값 가지고 오기
+            let now=new Date();
+            let h=now.getHours();
+            let m=now.getMinutes();
+            let s=now.getSeconds();
+            // 3. 시계바늘 각도값 계산
+            let h_deg=h*(360/12)+m*(360/12/60);
+            let m_deg=m*(360/60);
+            let s_deg=s*(360/60);
+            // 4. 각도값으로 각 시계바늘을 회전
+            lineHour.style.transform=`rotateZ(${h_deg}deg)`;
+            lineMin.style.transform=`rotateZ(${m_deg}deg)`;
+            lineSec.style.transform=`rotateZ(${s_deg}deg)`;
+            // *달력, 시간, 오늘 하루 보지 않기 등 다양하게 활용 가능
+        }
+
+        // 1. 초기 로드시 호출 영역
+        clock_f();
+
+        // 2. 1초에 한번씩 새로운 값 호출
+        setInterval(()=>{
+            clock_f();
+        },1000);
+
+
+    </script>
+</body>
+</html>

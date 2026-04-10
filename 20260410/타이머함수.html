@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 일정시간 이후에 한번만 자동 호출되는 타이머 함수
+        // setTimeout(()=>{},시간값);
+
+        // setTimeout(()=>{
+        //     document.write('나는 한번만')
+        // },1000)
+
+        // setTimeout의 정지, 삭제 시
+        // clearTimeout(id)
+        // => id : setTimeout을 저장한 변수명
+
+        // ------------------------------------------------------------
+
+        // 2. 일정시간마다 계속 반복 자동 호출되는 타이머 함수
+        // setInterval(()=>{},시간값);
+
+        // setInterval(()=>{
+        //     document.write('나는 계속 <br>')
+        // },1000)
+
+        // setInterval의 정지, 삭제 시
+        // clearInterval(id)
+        // => id : setInterval을 저장한 변수명
+        
+        // => 시간값 : 밀리세컨드 1초가 1000, 2초는 2000, 0.5초는 500
+        // *일정시간 이후 배너가 넘어가는 부분에 활용됨
+
+        // ------------------------------------------------------------
+
+        let si=setInterval(()=>{
+            document.write('출력 <br>')
+        },1000)
+
+        setTimeout(()=>{
+            clearInterval(si)
+        },5000)
+        // => 5초 이후에 정지
+    </script>
+</body>
+</html>

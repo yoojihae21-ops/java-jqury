@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // new Date()
+        // => 년도, 월, 일, 시, 분, 초 전체의 데이터를 사용할 때 명령
+        let newTime=new Date();
+        // document.write(newTime);
+        // 가져올 땐 get / 내가 설정 set
+
+        // 년도 => getFullYear()
+        let y=newTime.getFullYear();
+        document.write(y+"<br>");
+
+        // 월 => getMonth()
+        let mon=newTime.getMonth()+1;
+        document.write(mon+"<br>")
+        // => 0월부터 시작함
+        // => 그래서 +1을 해야 정상적인 월이 나옴
+
+        // 요일값
+        let day=newTime.getDay();
+        document.write(day+"<br>");
+        // => 일요일부터 시작해서 0부터 시작함
+        // => 0~6까지 표시됨
+        // => 숫자값으로 설정된 요일값
+
+        // 일 => getDate()
+        let d=newTime.getDate();
+        document.write(d+"<br>");
+
+        // 시 => getHours()
+        let h=newTime.getHours();
+        document.write(h+"<br>")
+
+        // 분 => getMinutes()
+        let m=newTime.getMinutes();
+        document.write(m+"<br>")
+
+        // 초 => getSeconds()
+        let s=newTime.getSeconds();
+        document.write(s+"<br>")
+
+        // 밀리초 => getMilliseconds()
+        let ms=newTime.getMilliseconds();
+        document.write(ms+"<br>")
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <dic class="out_box">
+        <span class="hour"></span> :
+        <span class="minute"></span> :
+        <span class="second"></span>
+    </dic>
+    <script>
+        // 1. 각 객체 선택
+        const hour=document.querySelector('.hour')
+        const minute=document.querySelector('.minute')
+        const second=document.querySelector('.second')
+        
+        // 2. 시, 분, 초 값을 가지고 오기
+        let newTime=new Date();
+        let h=newTime.getHours();
+        let m=newTime.getMinutes();
+        let s=newTime.getSeconds();
+
+        // 3. 각 객체의 text형식의 값으로 삽입하기
+        // => 선택자.innerText=삽입할 내용
+        // hour.innerText=h;
+        // minute.innerText=m;
+        // second.innerText=s;
+
+        time_f();
+        setInterval(() => {
+            // let newTime=new Date();
+            // let h=newTime.getHours();
+            // let m=newTime.getMinutes();
+            // let s=newTime.getSeconds();
+            // hour.innerText=h;
+            // minute.innerText=m;
+            // second.innerText=s;
+            time_f();
+        }, 1000);
+        // 삽입하는 내용과 불러오는 내용을 같이 넣어줘야 함
+        // 여기서 반복적으로 사용되는 내용은 함수로 엮어주기
+        // 함수로 엮은 뒤에는 꼭 호출을 해줘야 함
+
+        function time_f(){
+            let newTime=new Date();
+            let h=newTime.getHours();
+            let m=newTime.getMinutes();
+            let s=newTime.getSeconds();
+            hour.innerText=h;
+            minute.innerText=m;
+            second.innerText=s;
+        }
+    </script>
+</body>
+</html>

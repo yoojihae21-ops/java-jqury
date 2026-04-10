@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #warp{
+            width: 500px;
+            height: 500px;
+            background-color: lightsalmon;
+            border: 10px solid black;
+            box-sizing: border-box;
+            padding: 100px;
+        }
+        #warp p{
+            width: 100%;
+            height: 100%;
+            background-color: aquamarine;
+            transition-duration: 1s;
+        }
+
+        #warp .on{
+            background-color: red;
+        }
+        /* => 클래스 적용 시
+        => 태그의 옵션으로 class=클래스명 */
+    </style>
+</head>
+<body>
+    <div id="warp">
+        <p></p>
+    </div> <!-- #warp -->
+    <script>
+        const warp=document.querySelector('#warp')
+        const p=document.querySelector('p')
+        // 이벤트 발생 시
+        // => 이벤트를 발생시키는 객체
+        // => !) warp에 클릭이벤트
+        // => 이벤트가 발생하면 실행이 되는 객체
+        // => !) p에 배경색이 변경이 되도록 클래스 on을 추가
+        warp.addEventListener('click',()=>{
+            // 1. css 명령으로 p에 배경색을 직접 변경
+            // p.style.backgroundColor="yellow";  >>  직접적으로 형태값을 넣어주는 방법
+            
+            // 임의의 클래스 설정해서
+            // 클래스 값을 추가, 제거
+            // let cL=warp.classList;
+            // console.log(cL);
+
+            // [추가] 선택자.classList.add('클래스명') !)클래스명 앞에 . 넣지말기 주의!!
+            // p.classList.add('on');
+            // * 이걸 쓰려면 우선순위를 맞춰줘야 함 (p의 우선순위가 #warp이니까 on에도 똑같이 맞춰주기)
+
+            // [제거] 선택자.classList.remove('클래스명')
+            // p.classList.remove('on');
+
+            // 선택자.classList.contains('확인클래스명')
+            // => 있으면 참, 없으면 거짓
+
+            // warp를 클릭했을 때 p에 on 클래스가 있으면 제거하고 없으면 추가하기
+            // let isOn=p.classList.contains('on');
+            // alert(isOn);
+            // if(isOn){
+            //     p.classList.remove('on');
+            // }else{
+            //     p.classList.add('on');
+            // }
+
+            // add+remove+contains명령 통합한 명령
+            // =>toggle  >>  혼자서 이 작업 저 작업 다 하는
+            p.classList.toggle('on');
+        })
+
+    </script>
+</body>
+</html>
