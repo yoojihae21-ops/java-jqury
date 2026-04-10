@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 변수=>저장창고=>저장을 할 수 있는 데이터가 하나라고 한정이 되어 있다
+        // let num=30;
+        // console.log(num);
+        // // 배열=>저장창고=>여러개의 데이터를 저장 가능(방으로 구분해서 저장) 갯수 제한XX
+        // let nums=[10,20,30,40,50,60];
+        // console.log(nums);
+        // =>배열 전체값 출력
+        // 각 방에 저장된 데이터를 하나씩 출력하기
+        // 배열명[방번호]
+        // console.log(nums[0]);
+        // console.log(nums[1]);
+        // console.log(nums[2]);
+        // console.log(nums[3]);
+        // console.log(nums[4]);
+        // console.log(nums[5]);
+        // console.log(nums.length);
+
+        // 1. 방 번호=>index=>0부터 시작(순차값으로 확인 가능) 위에 []사이에 방은 5
+        // 2. 방의 개수(크기값)=>length=>1부터 시작 위에 []사이에 갯수는 6
+
+        // 마지막 index값은 방의 갯수값에서 -1
+        // index=length-1
+
+        // for(i=0;i<=nums.length-1;i++){
+        //     console.log(nums[i])
+        // }
+
+        // for(i=0;i<nums.length;i++){
+        //     console.log(nums[i])
+        // }
+
+        // let ani = ['원숭이', '사자', '호랑이', '곰', '여우'];
+        // for(i=0;i<ani.length;i++){
+        //     document.write(ani[i],'<br>')
+        // }
+        // for(i=ani.length-1;i>=0;i--){
+        //     document.write(ani[i],'<br>')
+        // }
+
+        // =>기본 for문 활용 시 방의 번호값을 변경해서 출력 가능
+        // for (i = 0; i < ani.length; i+=2) {
+        //     document.write(ani[i], '<br>')
+        // }
+
+        // 전체 데이터 활용 시 추가 for문 사용
+        // 1. 배열의 index 순서값을 활용
+        // for(index값을 저장할 변수명 in 배열명){
+        //     실행식
+        // }
+        // for(i in ani){
+        //     // document.write(i+'<br>');
+        //     // i는 index순서값
+        //     // document.write(ani[i],'<br>')
+        // }
+
+        // 2. 각 순차적으로 저장된 값을 활용
+        // for(i of ani){
+        //     // i=저장된 값
+        //     // i=ani[0]
+        //     document.write(i,'<br>')
+        // }
+
+        // 문제1
+        // 0~4까지 숫자값을 입력받아서 0~4에 해당 숫자가 입력되면
+        // 입력된 방의 값을 출력하고
+        // 0~4 숫자가 아닌 수가 입력이 되면 다시 입력 해주세요 출력
+
+        // let num=Number(prompt('0~4 중 숫자 하나를 입력해주세요',''));
+        // if(num>=0 && num<=ani.length-1){
+        //     document.write(ani[num]);
+        // }else {
+        //     document.write('다시 입력 해주세요')
+        // }
+
+        // null값 => 작업자가 컴퓨터에게 값이 없음을 알리는 자료형
+        // undefined => 컴퓨터가 작업자에게 값이 없음을 알리는 자료형
+
+        // 문제2
+        // 결과물
+        // ----*----*----*----*----*----*----*----*----*----*
+
+        // * 내가 푼 것
+        // for(i=1;i<=10;i++){
+        //     for(j=1;j<=4;j++){
+        //         document.write('-')
+        //     }
+        //     document.write('*')
+        // }
+
+        // * 모범 답안 2가지
+
+        // for(a=1;a<=10;a++){
+        //     document.write('----*')
+        // }
+        
+        // for(a=1;a<=50;a++){
+        //     if(a%5==0){
+        //         document.write("*")
+        //     }else{
+        //         document.write("-")
+        //     }
+        // }
+
+        // let st="----*----*----*----*----*----*----*----*----*----*"
+        // =>문자열은 자동 배열처리됨
+        // =>배열 관련 명령 사용이 가능
+        // document.write(st.length)
+
+        // * 만점 답안(let을 적고 나서 숫자대신 st.length를 쓰기)
+        // for(a=1;a<=st.length;a++){
+        //     if(a%5==0){
+        //         document.write("*")
+        //     }else{
+        //         document.write("-")
+        //     }
+        // }
+
+        // *
+        // **
+        // ***
+        // ****
+        // *****
+        // ******
+        // *******
+        // ********
+        // *********
+        // **********
+
+        // let st="**********"
+
+        // for(i=1;i<=st.length;i++){
+        //     for(j=1;j<=i;j++){
+        //         document.write("*")
+        //     }
+        //     document.write("<br>")
+        // }
+
+        // for(line=1;line<=10;line++){
+        //     for(star=1;star<=line;star++){
+        //         document.write(`*`)
+        //     }
+        //     document.write("<br>")
+        // }
+
+        for(line=10;line>=1;line--){
+             for(star=1;star<=line;star++){
+                 document.write(`*`)
+             }
+             document.write("<br>")
+         }
+
+    </script>
+</body>
+
+</html>

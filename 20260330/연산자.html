@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 1. 산술연산자
+        // + 더하기 20+10=30
+        // - 빼기 20-10=10
+        // * 곱하기 20*10=200
+        // / 나누기 20/10=2
+        // % 나머지 20%10=0 (나누어 떨어짐)
+
+        // let a=20;
+        // let b=10;
+        // let hab=a+b;
+        // document.write(hab+"<br>")
+        // document.write(`${hab}<br>`)
+        // ㄴ 둘 다 같은 거니까 편한 걸로 사용해주면 됨
+
+        // 출력문
+        // =>a+b=결과
+        // =>a-b=결과
+        // =>a*b=결과
+        // =>a/b=결과
+        // =>a%b=결과
+
+        // document.write(`a+b=${a+b}<br>`)
+        // document.write(`a-b=${a-b}<br>`)
+        // document.write(`a*b=${a*b}<br>`)
+        // document.write(`a/b=${a/b}<br>`)
+        // document.write(`a%b=${a%b}<br>`)
+        // document.write(`문자=${계산}<줄바꿈>`)
+
+        // document.write('a+b=',a+b,'<br>')
+        // document.write('a+b='+(a+b)+'<br>')
+        // ㄴ 요 두가지 방법도 있음
+        // document.write('a+b='+hab+'<br>')
+        // ㄴ 또는 hab을 작성한 상태에서 요렇게 넣어줘도 됨(hab은 스크립트 내에 1개만 있어야 함)
+
+        // 변수
+        // let a=10;
+        // let a=20;
+        // =>let(선언문 적고) a(변수를 적용했는데)
+        // =>let은 동일한 변수명 사용이 안됨
+
+        // let a
+        // a=20;
+        // =>let은 비어있는 값 사용 즉 선언만 먼저 하고 나중에 변수 적용 가능
+
+        // const b
+        // =>선언만 먼저 할 수 없음
+        // =>무조건 정의 형식으로 넣어줘야 함
+        // const c=20;
+
+        // var a=10;
+        // var a=20;
+        // =>var은 덮어쓰기 가능 >> 즉 뒤에 20이 먹어버림 작업이 합쳐지면 문제가 됨
+
+        // 2. 복합대입연산자
+        // =>자신의 변수에 자신을 대입한 후 연산
+        // let a=20;
+        // a=a+10 요거는 오른쪽 부터 읽는거임 즉 20인 a랑 10을 더하는 것
+        // 위의 a를 오른쪽에 대입한다는 개념
+        // document.write(a)
+        // a+=10;
+        // document.write(a)
+        // document.write(a+=10,"<br>")
+        // // a=a+10 a=20+10
+        // document.write(a-=10,"<br>")
+        // // a=a-10 a=30-10
+        // document.write(a*=10,"<br>")
+        // // a=a*10 a=20*10
+        // document.write(a/=10,"<br>")
+        // // a=a/10 a=200/10
+        // document.write(a%=10,"<br>")
+        // // a=a%10 a=20%10
+        // 이렇게 연속 연산을 하게되면 바로 위의 a값이 아래로 자꾸 대입돼서 기존과 결과가 달라질 수 있음
+
+        // 3. 증감연산자 55p
+        // 증감연산자는 무조건 1씩 증가하는 것임 그래서 num2는 숫자 2가 아닌 변수명임(첫번째 변수/두번째 변수)
+        // let a=10;
+        // a=a+1 => a+=1 => a++,++a (앞에 있던 뒤에 있던 무조건 1만)
+        // a=a-1 => a-=1 => a--,--a (무조건 1씩 감소)
+        // =>앞 기호 증가 또는 감소 연산 먼저 그리고 사용
+        // =>뒷 기호 먼저 사용 후 증가 또는 감소 연산
+
+        // document.write(a++,"<br>"); //10이 출력
+        // document.write(a); //11이 출력
+        // 뒤에 ++이 있으면 a먼저 출력하고 뒤에 1++해줘 라는 명령임
+
+        // document.write(++a,"<br>");
+        // document.write(a)
+        // 앞에 ++이 있으면 증가 시키고 출력하는 것
+
+        // *참고 >> a**, a//, a%% 요런건 없음
+
+        // 4. 비교연산자 57p
+        // =>참 또는 거짓 결과가 나오는 연산
+        // a<b a가 b보다 작다
+        // a>b a가 b보다 크다
+        // a<=b a가 b보다 작거나 같다
+        // a>=b a가 b보다 크거나 같다
+        // a==b a와 b가 모양이 같다
+        // a===b a와 b가 모양과 자료형(데이터종류)이 모두 같다
+        // a!=b a와 b가 모양이 다르다
+        // a!==b a와 b가 모양과 자료형(데이터종류)이 모두 다르다
+
+        let a=30;
+        let b=20;
+        // document.write(`${a<b}<br>`)
+        // document.write(`${a>b}<br>`)
+        // document.write(`${a<=b}<br>`)
+        // document.write(`${a>=b}<br>`)
+        // document.write(`${a==b}<br>`)
+        // document.write(`${a===b}<br>`)
+        // document.write(`${a!=b}<br>`)
+        // document.write(`${a!==b}<br>`)
+
+        let c=10;
+        // document.write(a>b>c) = 이게 왜 거짓으로 뜨냐면
+        // a>b => 참(1)>10 => 거짓이 되는 것
+        // => 비교 연산의 대상이 3개 이상일 경우 논리 연산자
+
+        // 4. 논리 연산자
+        
+        // and 연산 둘 다 참일 때 참 &&
+        // 둘 다 참일때만 참이 뜸
+        document.write(`${a>b && b>c}<br>`)
+        // 참 && 참 = 참
+        document.write(`${a<b && b>c}<br>`)
+        // 거짓 && 참 = 거짓
+        document.write(`${a>b && b<c}<br>`)
+        // 참 && 거짓 = 거짓
+        document.write(`${a<b && b<c}<br>`)
+        // 거짓 && 거짓 = 거짓
+
+        // or 연산 둘 다 거짓일 때 거짓 || (enter위에 원 표시를 쉬프트 누르고 누르기)
+        // 하나라도 참이 들어가면 참이 뜸
+        document.write(`${a>b || b>c}<br>`)
+        // 참 || 참 = 참
+        document.write(`${a<b || b>c}<br>`)
+        // 거짓 || 참 = 참
+        document.write(`${a>b || b<c}<br>`)
+        // 참 || 거짓 = 참
+        document.write(`${a<b || b<c}<br>`)
+        // 거짓 || 거짓 = 거짓
+
+        // not 연산 반대값을 가짐 ! (참이면 거짓 / 거짓이면 참)
+        document.write(`${!true}<br>`)
+        document.write(`${!false}<br>`)
+
+    </script>
+</body>
+</html>

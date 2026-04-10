@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 배열
+        // =>index(방번호 0부터 시작),length(방의 크기값 갯수 1부터 시작)
+        // =>문자열은 자동 배열 처리
+        // =>html 의 자식요소는 부모 안에서 배열처리
+        
+        let color=['빨강','노랑','초록','파랑','보라'];
+        // document.write(color);
+        // alert(color);
+        // console.log(color);
+        // * 콘솔에서 이상하게 나온다면 F5로 새로고침 여러번 해보기
+
+        // 1. toString()
+        // =>배열의 모든 문자를 쉼표 기준으로 결합해서 하나의 문자열로 확인 출력
+        // console.log(color.toString())
+
+        // 2. join(문자)
+        // =>지정한 문자로 배열의 데이터를 결합하여 하나의 문자열로 출력
+        // =>쉼표 대신 사용할 문자
+        // console.log(color.join("@"))
+        // document.write(color.join("&&"))
+
+        // 3. pop()
+        // =>마지막 방의 데이터값을 삭제할 때 사용
+        // console.log(color);
+        // =>기본 배열 출력
+        // console.log(color.pop());
+        // =>마지막방 값 확인
+        // console.log(color);
+        // =>pop() 명령으로 삭제 후 배열값 출력
+
+        // 4. push(추가요소)
+        // =>배열의 마지막에 새로운 요소를 추가
+        // =>비어있는 배열에 새로운 값 추가 시 사용
+        // 0,1,2,3
+        // color.push('핑크');
+        // console.log(color);
+
+        // 5. shift()
+        // =>첫번째 방의 데이터 값을 확인, 삭제함
+        // console.log(color);
+        // =>기본 배열 전체 출력
+        // console.log(color.shift());
+        // =>첫번째 값 확인 출력
+        // console.log(color)
+        // =>shift 명령 후 배열값 출력
+
+        // 6. unshift(추가요소)
+        // =>요거는 앞에 추가 요소를 넣을 때
+        // color.unshift('하늘');
+        // console.log(color);
+
+        // 7. splice(추가위치,삭제갯수,추가내용,추가내용)
+        // => 사이에 값이 들어간다
+        // => 지정한 추가 위치 부터 삭제할 갯수 만큼 삭제한 다음 추가 내용을 삽입
+        // => 삭제 갯수 0으로 삽입하면 삭제 없이 지정한 추가 내용만 추가 위치에 삽입
+        // console.log(color);
+        // color.splice(2,2,"바다색","하늘색");
+        // console.log(color);
+
+        // 8. concat(결합할 배열명)
+        // =>서로 다른 배열을 하나의 배열로 합칠 때 사용
+        // let fui=['바나나','사과','오렌지'];
+        // let hap=fui.concat(color)
+        // console.log(hap)
+
+        // 9. slice(시작index, 끝index)
+        // =>시작값부터 끝값 앞에 데이터까지 잘라서 저장함
+        // 시작 <= 배열요소에 포함 < 끝은 포함되지 않음
+        // let a=color.slice(1,3);
+        // console.log(a);
+
+        // 10. sort()
+        // => 오름차순 정렬
+        // console.log(color);
+        // color.sort();
+        // console.log(color);
+    </script>
+</body>
+</html>

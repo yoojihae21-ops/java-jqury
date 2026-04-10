@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 문제
+        // 1. 변수 2개를 선언하기
+        // 2. 각 변수에 40, 20 저장
+        // 3. 두수의 합, 차, 곱, 나누기, 나머지를 구하기
+
+        // let a=40;
+        // let b=20;
+
+        // 사용자 입력문
+        // =>경고창 형식의 입력문
+        // 또는 input태그를 활용하기도 함
+        // =>문자형으로 입력됨 (더하기의 경우 문자인지 숫자인지 정확하게 입력 필요)
+        // => 문자형의 숫자를 Number(변경할 문자형 삽입) 숫자형으로 변경함
+        // html은 소문자 형태가 많음
+        // 하지만 자바스크립트는 대소문자 구분 필수
+        // 그래서 명령문에 있는건 되도록 재사용 금지 Number >> num 이런식
+
+        // 입력 >> 저장 >> 출력 또는 사용
+        // 방탈출 힌트처럼 단계별로 세세하게 작성
+
+        /* ------------------------------------------------------------------------------ */
+
+        // 1. 입력하기
+        // prompt(message?: string, _default?: string): string | null
+        //        사용자에게 전달할 메시지인데 문자형이야 , 예시 문구인데 문자형이야 라는 뜻
+
+        // let a=prompt('첫번째 숫자입력해주세요','80,50')
+        // let b=prompt('두번째 숫자입력해주세요','80,50')
+        // 이렇게 작업했을 때 +는 7010라고 뜨는데 이것은 문자형이기 때문
+        // 이때 Number를 활용
+
+        let a=Number(prompt('첫번째 숫자입력해주세요','80,50'))
+        // a자체를 넘버로 처리해버림
+
+        let c=prompt('두번째 숫자입력해주세요','80,50')
+        let b=Number(c)
+        // 다른 표기법으로는 이미 작성된 c를 넘버로 뒤에 처리해주기
+        // 실무에서는 요런 형태값을 많이 사용하는 편
+
+        document.write(`a+b=${a+b}<br>`)
+        document.write(`a-b=${a-b}<br>`)
+        document.write(`a*b=${a*b}<br>`)
+        document.write(`a/b=${a/b}<br>`)
+        document.write(`a%b=${a%b}<br>`)
+
+        // ** 다른 형태
+        // document.write("a-b="+(a-b)+"<br>")
+        // document.write('a-b=',a-b,'<br>')
+    </script>
+</body>
+</html>

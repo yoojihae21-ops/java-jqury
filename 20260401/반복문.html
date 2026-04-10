@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=s, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 반복문
+        // =>같은 행동(실행식)을 반복함
+        // =>처음 시작값, 끝값, 규칙적인 값으로 증감식
+        // =>시작값 변수 초기화
+        // =>끝값 비교연산자 조건식
+        // =>증감식 대입연산 또는 증감식
+
+        // for(시작값;끝값;증감식){
+        //     끝값이 만족할 때까지 실행하는 실행식
+        // }
+
+        // 하하하를 5번 출력하기
+        // document.write('1-하하하<br>')
+        // document.write('2-하하하<br>')
+        // document.write('3-하하하<br>')
+        // document.write('4-하하하<br>')
+        // document.write('5-하하하<br>')
+        
+        // for(i=1;i<=5;i++){
+        //     document.write(i+"-하하하<br>")
+        // }
+
+        // 구구단 4단 출력
+        // for(i=1;i<=9;i++){
+        //     document.write(`4x${i}=${4*i}<br>`)
+        // }
+
+        // 문제
+        // 수를 입력 받아 입력 받은 수의 구구단을 출력
+        // let num=Number(prompt('원하는 숫자를 입력해주세요',''))
+        // for(i=1;i<=9;i++){
+        //     document.write(`${num}*${i}=${num*i}<br>`)
+        // }
+
+        // 2단부터 9단까지 1부터 9까지 곱해지는 구구단을 출력
+        document.write('구구단<br><br>')
+        for(i=2;i<=9;i++){
+            document.write(`${i}단<br>`)
+            for(j=1;j<=9;j++){
+                document.write(`${i}*${j}=${i*j}<br>`)
+            }
+            document.write(`<br><br>`)
+        }
+
+    </script>
+</body>
+</html>
