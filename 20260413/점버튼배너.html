@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .mask_box {
+            width: 500px;
+            height: 500px;
+            border: 10px solid black;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .move_box {
+            /* width: calc(100% * 5); */
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 0.5s;
+            display: flex;
+        }
+
+        .img_box {
+            /* width: calc(100% / 5); */
+            height: 100%;
+            background-color: lightblue;
+            font-size: 100px;
+            text-align: center;
+        }
+
+        .but_wrap {
+            width: 200px;
+            height: 30px;
+            background-color: rgb(104, 136, 196);
+            position: absolute;
+            left: calc(50% - 100px);
+            bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .but {
+            width: 30px;
+            height: 30px;
+            background-color: rgb(155, 206, 73);
+            font-size: 20px;
+            line-height: 30px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        .on {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1. mask_box의 크기 500*500
+    2. move_box 크기 mask_box크기 * img_box 갯수값
+    3. img_box 크기 mask_box 크기와 같은 크기로 5개
+    4. 이미지 갯수에 맞추어 버튼 갯수 동일하게 만들기 -->
+    <div class="mask_box">
+        <div class="move_box">
+            <div class="img_box">1</div>
+            <div class="img_box">2</div>
+            <div class="img_box">3</div>
+            <div class="img_box">4</div>
+            <div class="img_box">5</div>
+        </div> <!-- move_box -->
+        <div class="but_wrap">
+            <div class="but on">1</div>
+            <div class="but">2</div>
+            <div class="but">3</div>
+            <div class="but">4</div>
+            <div class="but">5</div>
+        </div> <!-- but_wrap -->
+    </div> <!-- mask_box -->
+
+
+    <script>
+        // 각 점을 클릭하면 move_box를 -mask_box의 크기값 만큼씩 왼쪽으로 움직이게 만들기
+        // 1. mask_box의 가로 세로 크기값 활용
+        // 2. move_box 가로 세로 크기값 설정
+        // 3. img_box의 가로 세로 크기값 설정
+        const mask_box = document.querySelector('.mask_box')
+        const move_box = document.querySelector('.move_box')
+        const img_boxs = document.querySelectorAll('.img_box')
+
+        const mask_box_info = mask_box.getBoundingClientRect();
+        const mask_box_width = mask_box_info.width;
+        const mask_box_height = mask_box_info.height;
+
+        move_box.style.width = `${mask_box_width * img_boxs.length}px`;
+        // move_box.style.height=`${mask_box_height}px`;
+        img_boxs.forEach((img_box) => {
+            img_box.style.width = `${mask_box_width}px`
+            // img_box.style.height=`${mask_box_width}px`
+        })
+
+        let buts = document.querySelectorAll('.but')
+
+        buts.forEach((but,i)=>{
+            but.addEventListener('click',(event)=>{
+                move_box.style.left = `-${mask_box_width * i}px`;
+                buts.forEach((el)=>{
+                    el.classList.remove('on')
+                })
+                event.currentTarget.classList.add('on')
+            })
+        })
+
+
+
+
+        // for (let i = 0; i < buts.length; i++) {
+        //     // 0,1,2,3..=>최종값을 출력
+        //     buts[i].addEventListener('click', (event) => {
+        //         move_box.style.left = `-${mask_box_width * i}px`;
+        //         // 각 버튼을 클릭하면 버튼의 배경색이 변경되도록 만들기
+        //         // classList.add,remove => 임의의 클래스 스타일 필요
+        //         // 여러개 버튼에 제거 기능 지정
+        //         for(el of buts){
+        //             el.classList.remove('on');
+        //         }
+        //         // 클릭한 but에만 on을 추가
+        //         // buts[i].classList.add('on')
+        //         event.currentTarget.classList.add('on')
+        //     })
+            // for (el of buts) {
+            //     console.log(el)
+            //     el.classList.remove('on');
+            // }
+            // buts[i].classList.add('on')
+            // 0,1,2,3..=>최종값을 출력
+        // }
+
+
+    </script>
+</body>
+
+</html>
