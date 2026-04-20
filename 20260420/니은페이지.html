@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .width_page{
+            display: flex;
+        }
+        .page{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 50px;
+        }
+        .but{
+            font-size: 100px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 브라우저가 첫번째 로드 될 때의 영역값
+            layout();
+            // 브라우저의 크기값이 변경될 때의 영역값
+            // => resize 이벤트
+            $(window).on('resize',function(){
+                layout();
+            })
+
+            function layout(){
+                // 1. 윈도우의 가로세로 크기값 가지고 오기
+                ww=$(window).width();
+                wh=$(window).height();
+                // => 함수 내부에서 let, const 전부 선언문으로 선언한 변수는 지역변수
+                // => 함수 내부에서 전역 변수로 지정(이때는 선언문 let, const를 빼고 해주면 됨)
+                // => 또는 밖에 하나 더 복사하는 방법
+                // 2. wrap의 가로 크기 설정
+                $('.wrap').css({
+                    width:ww*3,
+                    height:wh*3
+                })
+                // 3. page의 가로 세로 크기 설정, 배경색 각 다른색 설정
+                let bg=['red','blue','yellow','pink','green'];
+                $('.page').css({
+                    width:ww,
+                    height:wh,
+                    backgroundColor:function(index){
+                        return bg[index]
+                    }
+                })
+                $('.width_page').css({
+                    width:ww*3,
+                    height:wh
+                })
+            } /* layout 함수 끝 */
+
+            // $('자식객체',this) => this 안에 자식객체 선택
+
+            // 이벤트 영역
+            $('#but_1,#but_4').click(function(){
+                $('.wrap').animate({
+                    top:-wh
+                },500)
+            })
+            $('#but_2').click(function(){
+                $('.wrap').animate({
+                    top:0
+                },500)
+            })
+            $('#but_3').click(function(){
+                $('.wrap').animate({
+                    top:-wh*2
+                },500)
+            })
+            // $('#but_4').click(function(){
+            //     $('.wrap').animate({
+            //         top:-wh
+            //     },500)
+            // })
+            $('#but_5,#but_8').click(function(){
+                $('.wrap').animate({
+                    left:-ww
+                },500)
+            })
+            $('#but_6').click(function(){
+                $('.wrap').animate({
+                    left:0
+                },500)
+            })
+            $('#but_7').click(function(){
+                $('.wrap').animate({
+                    left:-ww*2
+                },500)
+            })
+            // $('#but_8').click(function(){
+            //     $('.wrap').animate({
+            //         left:-ww
+            //     },500)
+            // })
+            $('#but_9').click(function(){
+                $('.wrap').animate({
+                    top:0,
+                    left:0
+                },500)
+            })
+
+        }) /* ready 끝 */
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="page">
+            <h1>1</h1>
+            <button class="but" id="but_1">▼</button>
+        </div>
+        <div class="page">
+            <h1>2</h1>
+            <button class="but" id="but_2">▲</button>
+            <button class="but" id="but_3">▼</button>
+        </div>
+        <div class="width_page">
+            <div class="page">
+                <h1>3</h1>
+                <button class="but" id="but_4">▲</button>
+                <button class="but" id="but_5">▶</button>
+            </div>
+            <div class="page">
+                <h1>4</h1>
+                <button class="but" id="but_6">◀</button>
+                <button class="but" id="but_7">▶</button>
+            </div>
+            <div class="page">
+                <h1>5</h1>
+                <button class="but" id="but_8">◀</button>
+                <button class="but" id="but_9">홈</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

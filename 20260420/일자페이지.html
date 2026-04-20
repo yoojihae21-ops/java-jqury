@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            /* width: 100%;
+            height: calc(100vh * 3); */
+            background-color: lightblue;
+            position: fixed;
+            /* transition-duration: 0.5s; */
+        }
+        .page{
+            /* width: 100%;
+            height: 100vh; */
+            display: flex;
+            flex-direction: column;
+            /* => 가로축, 세로축이 변경된다 */
+            justify-content: center;
+            align-items: center;
+        }
+        /* .page:first-child{
+            background-color: lightcoral;
+        }
+        .page:nth-child(2){
+            background-color: rgb(158, 192, 255);
+        }
+        .page:last-child{
+            background-color: rgb(191, 155, 238);
+        } */
+        .but{
+            width: 200px;
+            height: 100px;
+            font-size: 100px;
+            line-height: 100px;
+        }
+        </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // but_1을 클릭하면 warp가 두번째 페이지가 보이도록 이동
+            // $('#but_1').on({
+            //     click:function(){
+            //         $('.wrap').css({
+            //             top:'-100vh'
+            //         })
+            //     }
+            // });
+            // // but_2를 클릭하면 warp가 세번째 페이지가 보이도록 이동
+            // $('#but_2').on({
+            //     click:function(){
+            //         $('.wrap').css({
+            //             top:'-200vh'
+            //         })
+            //     }
+            // });
+            // // but_3을 클릭하면 warp가 첫번째 페이지가 보이도록 이동
+            // $('#but_3').on({
+            //     click:function(){
+            //         $('.wrap').css({
+            //             top:0
+            //         })
+            //     }
+            // });
+
+
+            // 1. warp의 가로세로크기값 설정
+            // => 윈도우의 가로값, 윈도우의 세로값을 활용
+            let ww=$(window).width();
+            let wh=$(window).height();
+            // console.log('ww:'+ww);
+            // console.log('wh:'+wh);
+            $('.warp').css({
+                width:ww,
+                height:wh*3
+            })
+
+            // 2. page의 크기값
+            // => 배경색 배열 처리로 삽입하기
+            // => index(순서값), length(길이값)
+            let page_bg=['lightcoral','rgb(158, 192, 255)','rgb(191, 155, 238)']
+            $('.page').css({
+                width:ww,
+                height:wh,
+                backgroundColor:function(index){
+                    return page_bg[index]
+                }
+            })
+
+            // 애니메이션
+            // => 가로, 세로에 해당되는 크기값, margin, padding 여백값
+            // => top, left, right, bottom 위치값(css영역 position값 필수)에만 적용됨
+            // => opacity 적용 가능 하지만 색상은 지정 안됨
+            // $(움직이는 개체 선택).animate({
+            //     속성명:속성값,
+            //     속성명:속성값,...
+            // },속도,가속도형태,콜백함수)
+            //    ㄴ생략 가능
+            // 속도 : 움직이는 시간값 1000 - 1초
+            // 가속도 형태 : ease, liner ~ (추가로 설정 시 ui 플러그인 필요함)
+            // 콜백함수 : animate가 지정된 시간값에 맞추어서 완전히 끝난 다음 새로운 실행식을 삽입해야 할 때 사용하는 함수
+
+            $('#but_1').click(function(){
+                $('.wrap').animate({
+                    top:-wh
+                })
+            })
+            $('#but_2').click(function(){
+                $('.wrap').animate({
+                    top:-wh*2
+                })
+            })
+            $('#but_3').click(function(){
+                $('.wrap').animate({
+                    top:0
+                })
+            })
+
+
+        });
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="page">
+            <h1>첫번째 페이지</h1>
+            <button class="but" id="but_1">▼</button>
+        </div>
+        <div class="page">
+            <h1>두번째 페이지</h1>
+            <button class="but" id="but_2">▼</button>
+        </div>
+        <div class="page">
+            <h1>세번째 페이지</h1>
+            <button class="but" id="but_3">▲</button>
+        </div>
+    </div>
+</body>
+</html>
