@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+        }
+        .out_box{
+            width: 300px;
+            height: 500px;
+            border: 10px solid black;
+            margin: 30px;
+        }
+        .but{
+            width: 100%;
+            height: 100px;
+        }
+        .in_box{
+            width: 100%;
+            height: calc(100% - 100px);
+            background-color: violet;
+            display: block;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 기본 시각효과
+            // => 보일 때는 display:block, 안 보일 때 display:none
+            // => display 속성값이 지정된 객체에는 사용할 수 없음
+            // => 기본적인 시간값 설정가능함 1000 -> 1s
+
+            // 1. 크기값 변경
+            // => 보이게 show(시간값) display:block
+            // => 안 보이게 hide(시간값) dicplay:none
+            // => display값을 자동 인식 toggle(시간값)=show+hide
+            $('.but_1').click(function(){
+                // $('.in_box').show()
+                // => 내문서 전체 in_box에 적용
+                // $(this).next().show(1000)
+                // $(this).next().hide(1000)
+                $(this).next().toggle(1000)
+            })
+
+            // 2. 슬라이드 형식 변경
+            // => 보이게 slideDown(시간값) display:block
+            // => 안 보이게 slideUp(시간값) display:none
+            // => display값을 자동 인식 slideToggle(시간값)=slideDown+slideUp
+            $('.but_2').click(function(){
+                // $('.in_box').slideDown()
+                // $(this).next().slideDown(1000)
+                // $(this).next().slideUp(1000)
+                $(this).next().slideToggle(1000)
+            })
+            
+            // 3. 제자리 투명도 변경
+            // => 보이게 fadeIn(시간값) display:block opacity : 1
+            // => 안 보이게 fadeOut(시간값) display:none opacity : 0
+            // => display값을 자동 인식 fadeToggle(시간값)=fadeIn+fadeOut
+            $('.but_3').click(function(){
+                // $('.in_box').fadeIn()
+                // $(this).next().fadeIn(1000)
+                // $(this).next().fadeOut(1000)
+                $(this).next().fadeToggle(1000)
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="out_box">
+        <button class="but but_1">show+hide</button>
+        <div class="in_box">
+            <!-- 왼쪽 상단부터 크기가 커지면서 보이고
+            다시 왼쪽 상단으로 크기가 작아지면서 사라지는 기능 -->
+
+        </div>
+    </div>
+    <div class="out_box">
+        <button class="but but_2">slideDown+slideUp</button>
+        <div class="in_box">
+            <!-- 슬라이드 형식으로 위에서 내려오면서 보이고
+            슬라이드 형식으로 위로 올라가면서 사라지는 기능 -->
+        </div>
+    </div>
+    <div class="out_box">
+        <button class="but but_3">fadeIn+fadeOut</button>
+        <div class="in_box">
+            <!-- 제자리에서 나타나고 제자리에서 사라지는 기능 -->
+        </div>
+    </div>
+</body>
+</html>

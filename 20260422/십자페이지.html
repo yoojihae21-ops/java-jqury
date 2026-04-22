@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            /* 크기 스크립트 */
+            background-color: aqua;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        .page{
+            /* 크기 스크립트 */
+            /* 배경색 스크립트 */
+            position: relative;
+            font-size: 100px;
+            text-align: center;
+        }
+        .but{
+            font-size: 50px;
+        }
+        .width_page{
+            /* 크기 스크립트 */
+            display: flex;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            let ww=$(window).width();
+            let wh=$(window).height();
+            let page_bg=['red','blue','green','yellow','pink']
+            $('.wrap').css({
+                width:ww*3,
+                height:wh*3,
+                top:-wh,
+                left:-ww
+            })
+            $('.page').css({
+                width:ww,
+                height:wh,
+                backgroundColor:function(index){
+                    return page_bg[index]
+                },
+                // lineHeight:`${wh}px`
+            })
+            $('.width_page').css({
+                width:ww*3,
+                height:wh                
+            })
+            $('.top_page,.bottom_page').css({
+                left:ww
+            })
+
+            $('.topToMain,.bottomToMain').click(function(){
+                $('.wrap').animate({
+                    top:-wh
+                })
+            })
+            $('.leftToMain,.rightToMain').click(function(){
+                $('.wrap').animate({
+                    left:-ww
+                })
+            })
+            $('.mainToTop').click(function(){
+                $('.wrap').animate({
+                    top:0
+                })
+            })
+            $('.mainToLeft').click(function(){
+                $('.wrap').animate({
+                    left:0
+                })
+            })
+            $('.mainToRight').click(function(){
+                $('.wrap').animate({
+                    left:-ww*2
+                })
+            })
+            $('.mainToBottom').click(function(){
+                $('.wrap').animate({
+                    top:-wh*2
+                })
+            })
+            // $('.rightToMain').click(function(){
+            //     $('.wrap').animate({
+            //         left:-ww
+            //     })
+            // })
+            // $('.bottomToMain').click(function(){
+            //     $('.wrap').animate({
+            //         top:-wh
+            //     })
+            // })
+
+        })
+    </script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="page top_page">
+            <h1>위</h1>
+            <button class="but topToMain">홈</button>
+        </div> <!-- page -->
+        <div class="width_page">
+            <div class="page">
+                <h1>왼쪽</h1>
+                <button class="but leftToMain">홈</button>
+            </div> <!-- page -->
+            <div class="page">
+                <h1>메인</h1>
+                <button class="but mainToTop">위</button>
+                <button class="but mainToLeft">왼쪽</button>
+                <button class="but mainToRight">오른쪽</button>
+                <button class="but mainToBottom">아래</button>
+            </div> <!-- page -->
+            <div class="page">
+                <h1>오른쪽</h1>
+                <button class="but rightToMain">홈</button>
+            </div> <!-- page -->
+        </div> <!-- width_page -->
+        <div class="page bottom_page">
+            <h1>아래</h1>
+            <button class="but bottomToMain">홈</button>
+        </div> <!-- page -->
+    </div> <!-- wrap -->
+</body>
+</html>

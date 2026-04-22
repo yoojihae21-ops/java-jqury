@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .tab_wrap{
+            width: 400px;
+            height: 500px;
+            border: 10px solid black;
+        }
+        .tab_but_wrap{
+            width: 100%;
+            height: 100px;
+            display: flex;
+        }
+        .tab_but{
+            font-size: 50px;
+            width: 100%;
+        }
+        .tab_con_wrap{
+            width: 100%;
+            height: 400px;
+            position: relative;
+        }
+        .tab_con{
+            width: 100%;
+            height: 100%;
+            font-size: 60px;
+            text-align: center;
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            let tab_con_bg=['red','green','yellow','pink']
+            $('.tab_con').css({
+                backgroundColor:function(index){
+                    return tab_con_bg[index]
+                }
+            })
+            // 1. 단계로 표현하기
+            // 첫번째 but_1을 클릭하면 con_1이 보이게 display:block
+            // 첫번째 but_2을 클릭하면 con_2이 보이게 display:block
+            // 첫번째 but_3을 클릭하면 con_3이 보이게 display:block
+            // 첫번째 but_4을 클릭하면 con_4이 보이게 display:block
+            // $('.but_1').click(function(){
+            //     $('.tab_con').fadeOut();
+            //     $('.con_1').fadeIn(1000)
+            // })
+            // $('.but_2').click(function(){
+            //     $('.tab_con').fadeOut();
+            //     $('.con_2').fadeIn(1000)
+            // })
+            // $('.but_3').click(function(){
+            //     $('.tab_con').fadeOut();
+            //     $('.con_3').fadeIn(1000)
+            // })
+            // $('.but_4').click(function(){
+            //     $('.tab_con').fadeOut();
+            //     $('.con_4').fadeIn(1000)
+            // })
+
+            // 2. 각 버튼의 순서값 활용하기
+            // => index 값을 활용
+            // 순서값 활용 시 index() 명령 사용
+            // => 선택한 객체의 순서값을 가지고 옴
+            // 클릭한 버튼의 index값을 저장 사용
+            $('.tab_con').eq(0).fadeIn(0);
+            $('.tab_but').click(function(){
+                let i=$(this).index();
+                // => i와 동일한 순서의 tab_con만 보이게 작성
+                $('.tab_con').fadeOut(500);
+                $('.tab_con').eq(i).fadeIn(500);
+            })
+
+        })
+
+
+    </script>
+</head>
+<body>
+    <!-- 탭 메뉴 -->
+    <div class="tab_wrap">
+        <div class="tab_but_wrap">
+            <button class="tab_but but_1">탭1</button>
+            <button class="tab_but but_2">탭2</button>
+            <button class="tab_but but_3">탭3</button>
+            <button class="tab_but but_4">탭4</button>
+        </div>
+        <div class="tab_con_wrap">
+            <div class="tab_con con_1">탭내용1</div>
+            <div class="tab_con con_2">탭내용2</div>
+            <div class="tab_con con_3">탭내용3</div>
+            <div class="tab_con con_4">탭내용4</div>
+        </div>
+    </div>
+</body>
+</html>
