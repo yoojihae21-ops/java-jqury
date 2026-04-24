@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* body{
+            height: 5000px;
+        } */
+        /* html,body{
+            윈도우 선택자는 css에서 이렇게
+        } */
+        .page{
+            width: 100%;
+            /* => 부모영역에서 사용 가능한 크기만 인식 */
+            font-size: 50px;
+            text-align: center;
+            /* height: 100vh; */
+        }
+        .main_menu{
+            width: 100%;
+            height: 100px;
+            background-color: lightcoral;
+            display: flex;
+            text-align: center;
+            justify-content: space-evenly;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 99999;
+        }
+        .menu{
+            font-size: 30px;
+            line-height: 100px;
+            width: calc(100% / 4);
+        }
+        .menu.on{
+            background-color: rgb(228, 92, 92);
+            color: white;
+            font-weight: 900;
+        }
+        .top_but{
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            /* 스크롤 전에 보이지 않게 설정 */
+            display: none;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // let ww=$(window).width();
+            // console.log(ww)
+            // => 패딩, 스크롤바 제외
+            // => 순수하게 콘텐트가 표시되는 영역의 너비
+
+            // let in_ww=$(window).innerWidth();
+            // console.log(in_ww)
+            // => 패딩포함, 스크롤바는 제외
+            // => 보통 width()와 결과값이 동일
+            // => css의 설정에 따라서 패딩값이 붙을 수도 있음
+
+            // let out_ww=$(window).outerWidth();
+            // console.log(out_ww)
+            // => 패딩, 테두리, 스크롤바 포함
+            // => 100vw 동일 크기 브라우저 창 전체의 가시적인 너비를 측정할 때 주로 사용
+
+            // $('.page').css({
+            //     width:'100vw'
+            // })
+
+
+            // 1. 브라우저를 첫번째 열었을 때 레이아웃
+            layout();
+
+            // 2. 브라우저를 크기값 조절했을 때 레이아웃
+            // => resize 이벤트
+            $(window).resize(function(){
+                layout();
+            })
+
+            // 레이아웃 함수 설정
+            function layout(){
+                wh=$(window).height();
+                let page_bg=['skyblue','purple','green','yellow']
+                $('.page').css({
+                    height:wh,
+                    backgroundColor:function(index){
+                        return page_bg[index]
+                    }
+                })
+            }
+
+            // 스크롤 이벤트
+            // => 각 페이지별로 메뉴가 활성화 되도록 하기
+            $(window).scroll(function(){
+                // 1. 스크롤 위치값 확인
+                sct=$(this).scrollTop();
+                // => window로 가져와도 되지만 위에 이미 스크롤 이벤트를 추가해둬서 this로 가져오는 것
+                // 첫번째 페이지 위치일 때 menu_1에 on 추가
+                // 두번째 페이지 위치일 때 menu_2에 on 추가
+                // 세번째 페이지 위치일 때 menu_3에 on 추가
+                // 네번째 페이지 위치일 때 menu_4에 on 추가
+                $('.menu').removeClass('on')
+                if(sct>=0 && sct<wh){
+                    $('.menu_1').addClass('on')
+                }else if(sct>=wh && sct<wh*2){
+                    $('.menu_2').addClass('on')
+                }else if(sct>=wh*2 && sct<wh*3){
+                    $('.menu_3').addClass('on')
+                }else if(sct>=wh*3){
+                    $('.menu_4').addClass('on')
+                }
+
+                // 2. top_but는 첫번째 페이지에서는 보이지 않게, 두번째 페이지부터 나오게 설정
+                if(sct>=wh){
+                    $('.top_but').fadeIn(300);
+                }else{
+                    $('.top_but').fadeOut(300);
+                }
+
+            })
+
+            // 각 메뉴를 클릭하면 각 페이지로 이동하기
+            $('.menu').click(function(){
+                let i=$(this).index();
+                // animate
+                // => 위치값(top,left,right,bottom,scrollTop,scrollLeft)
+                // => 크기값(width,height,margin,padding)
+                // => 투명도(opacity)
+                $('html,body').animate({
+                    scrollTop:wh*i
+                })
+            })
+
+            // 1. top_but를 클릭하면 가장 위쪽으로 이동하기
+            // => 첫번째 페이지가 보이게 하기
+            // 2. top_but는 첫번째 페이지에서는 보이지 않게, 두번째 페이지부터 나오게 설정
+            // => 스크롤 이벤트에 추가
+            // let click_num=3;
+            $('.top_but').click(function(){
+                $('html,body').animate({
+                    scrollTop:0
+                })
+                // => 무조건 첫번째 페이지로 이동
+
+                // click_num--;
+                // $('html,body').animate({
+                //     scrollTop:wh*click_num
+                // })
+                // => let 추가 후 작업하면 한칸씩만 이동
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <header class="main_menu">
+        <div class="menu menu_1">페이지1</div>
+        <div class="menu menu_2">페이지2</div>
+        <div class="menu menu_3">페이지3</div>
+        <div class="menu menu_4">페이지4</div>
+    </header>
+    <div class="page">페이지1</div>
+    <div class="page">페이지2</div>
+    <div class="page">페이지3</div>
+    <div class="page">페이지4</div>
+    <button class="top_but">위로</button>
+</body>
+</html>

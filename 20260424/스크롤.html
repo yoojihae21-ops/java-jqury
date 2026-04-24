@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            /* height: 5000px; */
+        }
+        .page{
+            width: 100%;
+            font-size: 100px;
+            text-align: center;
+        }
+        .page:nth-child(1){
+            height: 500px;
+        }
+        .page:nth-child(2){
+            height: 1000px;
+        }
+        .page:nth-child(3){
+            height: 1500px;
+        }
+        .page:nth-child(4){
+            height: 800px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // 스크롤 이벤트
+            // => 윈도우 이벤트
+            // => 객체에 삽입된 스크롤 이벤트 지정 가능
+            let wh=$(window).height();
+            let sct=$(window).scrollTop();
+            // => 세로 스크롤 시 스크롤의 위치값을 의미
+            // let scl=$(window).scrollLeft();
+            // => 가로 스크롤 시 스크롤의 위치값을 의미
+            console.log('sct 함수외부 :',sct);
+            // console.log(scl);
+            let bg=['red','blue','yellow','green']
+            $('.page').css({
+                // height:wh,
+                backgroundColor:function(index){
+                    return bg[index];
+                }
+            })
+
+            $(window).on("scroll",function(){
+                sct=$(window).scrollTop();
+                // => 함수 내부 let 선언문 사용은 지역변수
+                // => 함수 내부 선언문 없이 지정하는 변수는 전역변수
+                console.log('sct 함수 내부 :',sct);
+                // 1. 높이값으로 페이지의 위치 확인
+                // => 일정 크기의 페이지값을 사용할 때
+                // => 규칙성이 있는 크기값을 활용
+                // if(sct>=0 && sct<wh){
+                //     console.log('첫번째 페이지');
+                // }else if(sct>=wh && sct<wh*2){
+                //     console.log('두번째 페이지');
+                // }else if(sct>=wh && sct<wh*3){
+                //     console.log('세번째 페이지');
+                // }else if(sct>=wh*3){
+                //     console.log('네번째 페이지');
+                // }
+                // 2. 윈도우의 왼쪽 상단을 기준으로 위에서 얼마나 떨어졌는지를 확인
+                let a=$('.page').eq(0).offset().top;
+                // console.log(a);
+                let b=$('.page').eq(1).offset().top;
+                // console.log(b);
+                let c=$('.page').eq(2).offset().top;
+                // console.log(c);
+                let d=$('.page').eq(3).offset().top;
+                // console.log(d);
+                if(sct>=0 && sct<b){
+                    console.log('첫번째 페이지')
+                }else if(sct>=b && sct<c){
+                    console.log('두번째 페이지')
+                }else if(sct>=c && sct<d){
+                    console.log('세번째 페이지')
+                }else if(sct>=d){
+                    console.log('네번째 페이지')
+                }
+
+            })
+        })
+    </script>
+</head>
+<body>
+    <div class="page">1</div>
+    <div class="page">2</div>
+    <div class="page">3</div>
+    <div class="page">4</div>
+</body>
+</html>
