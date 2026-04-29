@@ -10,9 +10,78 @@
     <script src="./js/script.js"></script>
 </head>
 <body>
-    <header class="main_header"></header>
+    <header class="main_header">
+        <div class="top_header">
+            <nav class="top_left">sns영역</nav>
+            <nav class="top_right">계열 로고영역</nav>
+        </div>
+        <div class="bottom_header">
+            <h1 class="main_logo">
+                <a href="#"><img src="./img/path22.svg" alt="검정로고"></a>
+            </h1>
+            <nav class="main_menu">
+                <div class="top_menu">
+                    <a href="#">EDITOR’S LETTER</a>
+                </div>
+                <div class="top_menu">
+                    <a href="#">LATEST</a>
+                </div>
+                <div class="top_menu">
+                    <a href="#">FASHION</a>
+                </div>
+                <div class="top_menu">
+                    <a href="#">BEAUTY</a>
+                </div>
+                <div class="top_menu">
+                    <a href="#">DEKOPOP</a>
+                </div>
+                <div class="top_menu">
+                    <a href="#">TECH & MOBILITY</a>
+                </div>
+                <div class="top_menu">
+                    <a href="#">ART & CULTURE</a>
+                </div>
+                <div class="top_menu">
+                    <a href="#">FASHION WEEK</a>
+                </div>
+                <div class="top_menu">
+                    <a href="#">DAZED ASIA 100</a>
+                    <div class="sub_menu">
+                        <a href="#">2025 DAZED ASIA 100</a>
+                        <a href="#">2024 DAZED ASIA 100</a>
+                    </div>
+                </div>
+                <div class="top_menu">
+                    <a href="#">SUBSCRIBE</a>
+                </div>
+            </nav>
+            <div class="toggle_menu_wrap">
+                <span class="search_box">?</span>
+                <div class="toggle_menu">=</div>
+            </div>
+        </div>
+    </header>
     <div class="wrap">
-        <section class="page main_page"></section>
+        <section class="page main_page mask_box">
+            <div class="move_box">
+                <!-- 이미지의 크기와 비율이 동일할 경우
+                img태그로 이미지 삽입하면 됨 -->
+                <!-- 이미지의 크기가 일정하지 않다면
+                각 부모 박스를 만들어 주는 것이 좋음 -->
+                <div class="img_box">
+                    <img src="./img/IMG_3190-819x1024.jpg" alt="변우석사진_1">
+                </div>
+                <div class="img_box">
+                    <img src="./img/IMG_3191-819x1024.jpg" alt="변우석사진_2">
+                </div>
+                <div class="img_box">
+                    <img src="./img/IMG_3192-819x1024.jpg" alt="변우석사진_3">
+                </div>
+                <div class="img_box">
+                    <img src="./img/IMG_3193-819x1024.jpg" alt="변우석사진_4">
+                </div>
+            </div> <!-- move_box -->
+        </section>
         <section class="page sec_page">
             <h2 class="page_title_1"></h2>
             <div class="con_box img_con"></div>
@@ -127,6 +196,14 @@
             <div class="con_box img_con"></div>
         </section>
         <footer class="main_footer"></footer>
+    </div>
+
+    <div class="search_wrap">
+        <input type="search" id="search_input">
+        <button id="close_but">X</button>
+    </div>
+    <div class="toggle_box">
+        숨김메뉴 영역
     </div>
 </body>
 </html>
