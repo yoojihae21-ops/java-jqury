@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <!-- => 기존 스타일보다 우선순위를 높여서 스타일 지정해야 함 -->
+    <style>
+        .swiper {
+            width: 600px;
+            height: 300px;
+            border: 10px solid black;
+        }
+        .img_box{
+            background-color: teal;
+            font-size: 50px;
+            text-align: center;
+            line-height: 300px;
+            color: white;
+        }
+        .swiper-pagination-bullet{
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+</head>
+
+<body>
+    <!-- Slider main container -->
+    <div class="swiper mask_box">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper move_box">
+            <!-- Slides -->
+            <div class="swiper-slide img_box">Slide 1</div>
+            <div class="swiper-slide img_box">Slide 2</div>
+            <div class="swiper-slide img_box">Slide 3</div>
+            <div class="swiper-slide img_box">Slide 4</div>
+            <div class="swiper-slide img_box">Slide 5</div>
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+        <!-- => 점 버튼 영역 -->
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <!-- => 화살표 버튼 왼쪽 -->
+        <div class="swiper-button-next"></div>
+        <!-- => 화살표 버튼 오른쪽 -->
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+        <script>
+            const swiper = new Swiper('.swiper', {
+                // Optional parameters
+                direction: 'horizontal',
+                // => 스와이퍼 방향값
+                // => 가로 horizontal
+                // => 세로 vertical
+                loop: true,
+                // => 반복값
+                // => true 반복
+                // => false 반복안함(기본값)
+
+                // If we need pagination
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable:true,
+                    // 번호 텍스트 형식
+                    renderBullet:function(index,className){
+                        return '<span class="'+className+'">'+(index+1)+'</span>'
+                    }
+
+                },
+                // => 점버튼 영역
+
+                // Navigation arrows
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                // => 화살표 버튼 영역
+
+                // And if we need scrollbar
+                // scrollbar: {
+                //     el: '.swiper-scrollbar',
+                // },
+
+                slidesPerView:3,
+                // => 한 영역 안에 보여지는 이미지 갯수
+                spaceBetween:30,
+                // => 이미지 사이 여백값
+                // grabCursor:true,
+
+            });
+        </script>
+    </div>
+</body>
+
+</html>

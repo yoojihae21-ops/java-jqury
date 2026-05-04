@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .mask_box{
+            width: 800px;
+            height: 400px;
+            border: 10px solid black;
+            position: relative;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        .move_box{
+            width: calc(800px * 5);
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+        }
+        .img_box{
+            width: 400px;
+            height: 400px;
+            font-size: 80px;
+            background-color: teal;
+            margin: 0 auto;
+        }
+        .on{
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+        }
+        .but{
+            width: 90px;
+            height: 90px;
+            font-size: 50px;
+            line-height: 90px;
+            position: absolute;
+            top: calc(50% - 45px);
+            z-index: 10;
+        }
+        #left_but{
+            left: 10px;
+        }
+        #right_but{
+            right: 10px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#left_but').click(function(){
+                $('img_box').eq(0).addClass(on);
+
+                $('.move_box').animate({
+                    left:0
+                },300,function(){
+                    $('.img_box').last().prependTo('.move_box')
+                    $('.move_box').css({
+                        left:-400
+                    })
+
+                    $('img_box').removeClass(on);
+                    $('img_box').eq(1).addClass(on);
+                })
+            })
+            $('#right_but').click(function(){
+                $('.move_box').animate({
+                    left:-400
+                },300,function(){
+                    $('.img_box').first().appendTo('.move_box')
+                    $('.move_box').css({
+                        left:0
+                    })
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <!-- 가로 800 세로 400 -->
+    <div class="mask_box">
+        <div class="move_box">
+            <div class="img_box">1</div>
+            <div class="img_box">2</div>
+            <div class="img_box">3</div>
+            <div class="img_box">4</div>
+            <div class="img_box">5</div>
+        </div><!-- move_box -->
+        <button class="but" id="left_but">&lt;</button>
+        <button class="but" id="right_but">&gt;</button>
+    </div><!-- mask_box -->
+</body>
+</html>
