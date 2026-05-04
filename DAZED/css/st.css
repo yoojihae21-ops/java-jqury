@@ -44,14 +44,20 @@ a{
 }
 .main_page{
     height: calc(100vh - 105px);
-    background-color: lightskyblue;
+    /* background-color: lightskyblue; */
 }
 .sec_page{
     height: calc(720px + 325px);
-    background-color: thistle;
+    /* background-color: thistle; */
+}
+.sec_page .page_title_1{
+    opacity: 0;
+    /* => 1 */
 }
 .sec_page .con_box{
     height: calc(100% - 325px);
+    margin-top: 100px;
+    /* => 0 */
 }
 .con_box{
     width: 50%;
@@ -86,11 +92,22 @@ a{
 .page_title_1{
     width: 100%;
     height: 325px;
-    background-color: steelblue;
+    /* background-color: steelblue; */
+}
+.page_title_1>h2{
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: 5px;
+    margin-top: 80px;
+}
+.page_title_1>p{
+    font-size: 20px;
+    text-align: center;
+    font-weight: 800;
 }
 .main_footer{
     height: 320px;
-    background-color: yellow;
+    background-color: rgb(0, 0, 0);
 }
 
 /* 첫번째 페이지 슬라이드 */
@@ -214,10 +231,26 @@ a{
 .search_box{
     width: 50px;
     height: 100%;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 .toggle_menu{
     width: 50px;
     height: 100%;
-    background-color: yellow;
+    /* background-color: yellow; */
+}
+
+/* 메뉴에 마우스를 올리면 밑줄 나오기 */
+.top_menu::after{
+    /* 선택한 객체에 가상의 객체를 삽입함
+    => 가상 선택자로 삽입한 객체는 inline 형식 */
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: black;
+    display: block;
+    transition-duration: 0.5s;
+    margin-top: -15px;
+}
+.top_menu:hover::after{
+    width: 100%;
 }

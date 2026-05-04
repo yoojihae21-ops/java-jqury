@@ -51,6 +51,8 @@ function auto_ani(){
 let sct_before=0;
 $(window).scroll(function(){
     let sct_after=$(this).scrollTop();
+    // => 스크롤의 위치 확인
+    // => pc는 100단위, 모바일(10단위, 1단위)
     if(sct_before<sct_after){
         console.log('내림')
         // $('.main_header').css({
@@ -84,6 +86,28 @@ $(window).scroll(function(){
 
         sct_before=sct_after;
     }
+
+    // 스크롤 영역 애니
+    // 1. 첫번째 페이지의 전체 높이값을 비율로 확인
+    let mp_h=$('.main_page').height();
+    if(sct_after>mp_h*0.5){
+        $('.sec_page .page_title_1').animate({
+            opacity:1
+        },500)
+        $('.sec_page .con_box').animate({
+            marginTop:0
+        },500)
+    }else{
+        $('.sec_page .page_title_1').css({
+            opacity:0
+        })
+        $('.sec_page .con_box').css({
+            marginTop:100
+        })
+        // => 초기화값을 지정하면 반복효과 작업을 할 수 있음
+        // => 조건문, 이벤트 삽입해서 변경된 속성은
+        //    다시 변경 전으로 자동 복귀 되지 않음
+    }
 })
 
 // 3. 서브메뉴 영역
@@ -102,6 +126,11 @@ $('.search_box').click(function(){
         top:0
     })
 })
+$('#close_but').click(function(){
+    $('.search_wrap').stop().animate({
+        top:-200
+    })
+})
 
 // 4-1. close_but를 클릭하면 search_box가 다시 위로 올라감
 
@@ -112,14 +141,19 @@ $('.toggle_menu').on({
         $('.toggle_box').stop().animate({
             right:0
         })
-    },
-    mouseleave:function(){}
+    }
 })
 
 // 어디에 마우스리브 기능을 넣어야 하는지 확인
 
 
-
+$('.toggle_box').on({
+    mouseleave:function(){
+        $(this).stop().animate({
+            right:-400
+        })
+    }
+})
 
 
 
